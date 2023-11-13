@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arrow Filters</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 10px;
+                box-sizing: border-box;
+                font-family: 'lato', sans-serif;
+            }
+
+            input[type=text] {
+                padding: 10px;
+                margin-top: 10px;
+                width: 30%;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            li {
+                text-align: left;
+                background-color: #f1f1f1;
+                padding: 10px;
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="searchInput" placeholder="Filter list...">
+        <br><br>
+
+        <ul id="myList">
+            <li>Cherry</li>
+            <li>Orange</li>
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Mango</li>
+            <li>Watermelon</li>
+            <li>Pineapple</li>
+            <li>Strawberry</li>
+            <li>Blueberry</li>
+            <li>Avocado</li>
+            <li>Tomato</li>
+            <li>Papaya</li>
+            <li>Guava</li>
+            <li>Coconut</li>
+            <li>Jackfruit</li>
+            <li>Apricot</li>
+            <li>Blackberry</li>
+        </ul>
+
+        <script>
+            var input = document.getElementById("searchInput");
+            var list = document.getElementById("myList");
+            var items = list.getElementsByTagName("li");
+
+            input.addEventListener("input", function() {
+                var filter = input.value.toUpperCase();
+
+                for (var i = 0; i < items.length; i++) {
+                    var itemText = items[i].textContent || items[i].innerText;
+
+                    items[i].style.display = itemText.toUpperCase().indexOf(filter) > -1 ? "" : "none";
+                }
+            });
+        </script>
+    </body>
+</html>
